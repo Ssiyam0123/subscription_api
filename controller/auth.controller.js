@@ -22,6 +22,7 @@ export const signUp = async (req, res, next) => {
     const newUser = await User.create([
       { name, email, password: hashedPassword },
     ]);
+    
 
     const token = jwt.sign({ userId: newUser[0]._id }, JWT_SECRET, {
       expiresIn: JWT_EXPIRES_IN,
